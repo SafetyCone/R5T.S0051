@@ -13,7 +13,7 @@ namespace R5T.S0051
         {
             /// Inputs.
             var projectName =
-                "R5T.W1000"
+                ProjectNames.Instance.WebTest
                 ;
             var projectDescription = "A first generated web application project.";
 
@@ -37,7 +37,7 @@ namespace R5T.S0051
 		{
 			/// Inputs.
 			var projectName =
-				"R5T.W1000"
+				ProjectNames.Instance.WebTest
 				;
 			var projectDescription = "A first generated web server for Blazor client project.";
 
@@ -57,11 +57,11 @@ namespace R5T.S0051
 			F0033.NotepadPlusPlusOperator.Instance.Open(projectPathsInformation.ProjectFilePath);
 		}
 
-        public async Task Create_WebServerForBlazorClient()
+        public async Task Create_WebBlazorClient()
         {
             /// Inputs.
             var projectName =
-                "R5T.W1000"
+                ProjectNames.Instance.WebTest
                 ;
             var projectDescription = "A first generated web server for Blazor client project.";
 
@@ -72,7 +72,7 @@ namespace R5T.S0051
                 projectName,
                 async projectPathInformation =>
                 {
-                    await F0084.ProjectOperations.Instance.CreateNewProject_WebServerForBlazorClient(
+                    await F0084.ProjectOperations.Instance.CreateNewProject_WebBlazorClient(
                         projectPathInformation.ProjectFilePath,
                         projectDescription);
                 });
