@@ -9,6 +9,7 @@ namespace R5T.S0051
 	public partial interface IProjectNames : IValuesMarker
 	{
 		public string Temporary => "Temporary";
-		public string WebTest => "R5T.W1000";
+        public string Example_RazorClassLibrary => "R5T.R9999";
+        public string WebTest => "R5T.W1000";
 	}
 }

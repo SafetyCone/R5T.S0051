@@ -16,7 +16,8 @@ namespace R5T.S0051
             //await ProjectScripts.Instance.CreateConsoleProject();
             //await ProjectScripts.Instance.CreateLibraryProject();
             //await ProjectScripts.Instance.Create_WebServerForBlazorClient();
-            await ProjectScripts.Instance.Create_WebBlazorClient();
+            //await ProjectScripts.Instance.Create_WebBlazorClient();
+            await ProjectScripts.Instance.CreateRazorClassLibrary();
         }
     }
 }

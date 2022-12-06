@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using R5T.F0052;
+
 using R5T.T0132;
 
 
@@ -9,6 +9,33 @@ namespace R5T.S0051
 	[FunctionalityMarker]
 	public partial interface IProjectScripts : IFunctionalityMarker
 	{
+        public async Task CreateRazorClassLibrary()
+        {
+            /// Inputs.
+            var projectName =
+                ProjectNames.Instance.Example_RazorClassLibrary
+                ;
+            var projectDescription =
+                "A first generated Razor class library project."
+                ;
+
+
+            /// Run.
+            var projectContext = Instances.ProjectContextOperations.GetProjectContext(
+                projectName,
+                projectDescription,
+                DirectoryPaths.Instance.TemporaryProjectParent);
+
+            await F0000.FileSystemOperator.Instance.ClearDirectory(projectContext.ProjectDirectoryPath);
+
+            await F0084.ProjectOperations.Instance.CreateNewProject_RazorClassLibrary(
+                projectContext.ProjectFilePath,
+                projectContext.ProjectDescription);
+
+            F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectContext.ProjectDirectoryPath);
+            F0033.NotepadPlusPlusOperator.Instance.Open(projectContext.ProjectFilePath);
+        }
+
         public async Task CreateWebApplicationProject()
         {
             /// Inputs.
