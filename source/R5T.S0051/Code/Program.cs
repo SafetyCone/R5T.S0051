@@ -12,11 +12,11 @@ namespace R5T.S0051
             //await ProjectScripts.Instance.New_Library_Simple();
 
             //await ProjectScripts.Instance.New_Console();
-            await ProjectScripts.Instance.New_DeployScripts();
+            //await ProjectScripts.Instance.New_DeployScripts();
             //await ProjectScripts.Instance.New_Library();
             //await ProjectScripts.Instance.New_WebServerForBlazorClient();
             //await ProjectScripts.Instance.New_WebBlazorClient();
-            //await ProjectScripts.Instance.New_RazorClassLibrary();
+            await ProjectScripts.Instance.New_RazorClassLibrary();
 
             //await ProjectScripts.Instance.CreateClassInProject();
             //await ProjectScripts.Instance.CreateInstancesInProject();

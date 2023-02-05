@@ -175,11 +175,18 @@ namespace R5T.S0051
         public async Task New_RazorClassLibrary()
         {
             /// Inputs.
+            var deleteSolutionDirectoryForConstruction = false;
             var projectName =
-                ProjectNames.Instance.Example_RazorClassLibrary
+                //ProjectNames.Instance.Example_RazorClassLibrary
+                "D8S.W0003.R000"
                 ;
             var projectDescription =
-                "A first generated Razor class library project."
+                //"A first generated Razor class library project."
+                "Razor class library for the D8S.W0003 project."
+                ;
+            var solutionDirectoryPath =
+                //DirectoryPaths.Instance.TemporaryProjectParent
+                @"C:\Code\DEV\Git\GitHub\davidcoats\D8S.W0003.Private\source\"
                 ;
 
 
@@ -187,16 +194,19 @@ namespace R5T.S0051
             var projectContext = Instances.ProjectContextOperations.GetProjectContext(
                 projectName,
                 projectDescription,
-                DirectoryPaths.Instance.TemporaryProjectParent);
+                solutionDirectoryPath);
 
-            await F0000.FileSystemOperator.Instance.ClearDirectory(projectContext.ProjectDirectoryPath);
+            if(deleteSolutionDirectoryForConstruction)
+            {
+                await Instances.FileSystemOperator.ClearDirectory(projectContext.ProjectDirectoryPath);
+            }
 
-            await F0084.ProjectOperations.Instance.NewProject_RazorClassLibrary(
+            await Instances.ProjectOperations.NewProject_RazorClassLibrary(
                 projectContext.ProjectFilePath,
                 projectContext.ProjectDescription);
 
-            F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectContext.ProjectDirectoryPath);
-            F0033.NotepadPlusPlusOperator.Instance.Open(projectContext.ProjectFilePath);
+            Instances.WindowsExplorerOperator.OpenDirectoryInExplorer(projectContext.ProjectDirectoryPath);
+            Instances.NotepadPlusPlusOperator.Open(projectContext.ProjectFilePath);
         }
 
         public async Task New_WebApplicationProject()
