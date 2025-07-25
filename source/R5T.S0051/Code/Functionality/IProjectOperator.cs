@@ -17,7 +17,7 @@ namespace R5T.S0051
 		{
 			var projectDirectoryName = F0052.ProjectDirectoryNameOperator.Instance.GetProjectDirectoryName_FromProjectName(projectName);
 
-			var projectDirectoryPath = F0002.PathOperator.Instance.GetDirectoryPath(
+			var projectDirectoryPath = F0002.PathOperator.Instance.Get_DirectoryPath(
 				parentDirectoryPath,
 				projectDirectoryName);
 
@@ -33,7 +33,7 @@ namespace R5T.S0051
         {
             var projectDirectoryName = F0052.ProjectDirectoryNameOperator.Instance.GetProjectDirectoryName_FromProjectName(projectName);
 
-            var projectDirectoryPath = F0002.PathOperator.Instance.GetDirectoryPath(
+            var projectDirectoryPath = F0002.PathOperator.Instance.Get_DirectoryPath(
                 parentDirectoryPath,
                 projectDirectoryName);
 
@@ -41,7 +41,7 @@ namespace R5T.S0051
 
             async Task Internal(string projectDirectoryPath)
             {
-                var projectFilePath = F0052.ProjectPathsOperator.Instance.GetProjectFilePath(
+                var projectFilePath = F0052.ProjectPathsOperator.Instance.Get_ProjectFilePath(
                     projectDirectoryPath,
                     projectName);
 

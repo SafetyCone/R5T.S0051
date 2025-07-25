@@ -34,8 +34,8 @@ namespace R5T.S0051
 
             if (clearFilesDuringConstruction)
             {
-                FileSystemOperator.Instance.DeleteFile_OkIfNotExists(winFormContext.CodeFilePath);
-                FileSystemOperator.Instance.DeleteFile_OkIfNotExists(winFormContext.DesignerFilePath);
+                FileSystemOperator.Instance.Delete_File_OkIfNotExists(winFormContext.CodeFilePath);
+                FileSystemOperator.Instance.Delete_File_OkIfNotExists(winFormContext.DesignerFilePath);
             }
 
             await ProjectOperations.Instance.CreateWinFormInProject(winFormContext);
@@ -78,7 +78,7 @@ namespace R5T.S0051
                     .Select(context => context.InterfaceCodeFilePath)
                     .Now();
 
-                filePathsToClear.ForEach(filePath => FileSystemOperator.Instance.DeleteFile_OkIfNotExists(
+                filePathsToClear.ForEach(filePath => FileSystemOperator.Instance.Delete_File_OkIfNotExists(
                     filePath));
             }
 
@@ -120,10 +120,10 @@ namespace R5T.S0051
 
             if(clearForConstruction)
             {
-                FileSystemOperator.Instance.DeleteFile_OkIfNotExists(
+                FileSystemOperator.Instance.Delete_File_OkIfNotExists(
                     razorComponentContext.RazorFilePath);
 
-                FileSystemOperator.Instance.DeleteFile_OkIfNotExists(
+                FileSystemOperator.Instance.Delete_File_OkIfNotExists(
                     razorComponentContext.CodeBehindFilePath);
             }
 
@@ -161,7 +161,7 @@ namespace R5T.S0051
 
             if(clearForConstruction)
             {
-                FileSystemOperator.Instance.DeleteFile_OkIfNotExists(
+                FileSystemOperator.Instance.Delete_File_OkIfNotExists(
                     classContext.CodeFilePath);
             }
 
@@ -205,7 +205,7 @@ namespace R5T.S0051
                 projectContext.ProjectFilePath,
                 projectContext.ProjectDescription);
 
-            Instances.WindowsExplorerOperator.OpenDirectoryInExplorer(projectContext.ProjectDirectoryPath);
+            Instances.WindowsExplorerOperator.Open(projectContext.ProjectDirectoryPath);
             Instances.NotepadPlusPlusOperator.Open(projectContext.ProjectFilePath);
         }
 
@@ -229,7 +229,7 @@ namespace R5T.S0051
 						projectDescription);
 				});
 
-			F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectPathsInformation.ProjectDirectoryPath);
+			F0034.WindowsExplorerOperator.Instance.Open(projectPathsInformation.ProjectDirectoryPath);
 			F0033.NotepadPlusPlusOperator.Instance.Open(projectPathsInformation.ProjectFilePath);
 		}
 
@@ -253,7 +253,7 @@ namespace R5T.S0051
 						projectDescription);
 				});
 
-			F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectPathsInformation.ProjectDirectoryPath);
+			F0034.WindowsExplorerOperator.Instance.Open(projectPathsInformation.ProjectDirectoryPath);
 			F0033.NotepadPlusPlusOperator.Instance.Open(projectPathsInformation.ProjectFilePath);
 		}
 
@@ -277,7 +277,7 @@ namespace R5T.S0051
                         projectDescription);
                 });
 
-            F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectPathsInformation.ProjectDirectoryPath);
+            F0034.WindowsExplorerOperator.Instance.Open(projectPathsInformation.ProjectDirectoryPath);
             F0033.NotepadPlusPlusOperator.Instance.Open(projectPathsInformation.ProjectFilePath);
         }
 
@@ -301,7 +301,7 @@ namespace R5T.S0051
 						projectDescription);
 				});
 
-			F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectPathsInformation.ProjectDirectoryPath);
+			F0034.WindowsExplorerOperator.Instance.Open(projectPathsInformation.ProjectDirectoryPath);
 			F0033.NotepadPlusPlusOperator.Instance.Open(projectPathsInformation.ProjectFilePath);
 		}
 
@@ -326,7 +326,7 @@ namespace R5T.S0051
 				        projectDescription);
 				});
 
-			F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectPathsInformation.ProjectDirectoryPath);
+			F0034.WindowsExplorerOperator.Instance.Open(projectPathsInformation.ProjectDirectoryPath);
 			F0033.NotepadPlusPlusOperator.Instance.Open(projectPathsInformation.ProjectFilePath);
 		}
 
@@ -353,7 +353,7 @@ namespace R5T.S0051
                         targetProjectName);
                 });
 
-            F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectPathsInformation.ProjectDirectoryPath);
+            F0034.WindowsExplorerOperator.Instance.Open(projectPathsInformation.ProjectDirectoryPath);
             F0033.NotepadPlusPlusOperator.Instance.Open(projectPathsInformation.ProjectFilePath);
         }
 
@@ -369,7 +369,7 @@ namespace R5T.S0051
             var projectName =
                 ProjectNames.Instance.Temporary
                 ;
-            var projectDefaultNamespaceName = Instances.ProjectNamespacesOperator.GetDefaultNamespaceName_FromProjectName(projectName);
+            var projectDefaultNamespaceName = Instances.ProjectNamespacesOperator.Get_DefaultNamespaceName_FromProjectName(projectName);
 
 
             /// Run.
@@ -393,7 +393,7 @@ namespace R5T.S0051
             var projectName =
                 ProjectNames.Instance.Temporary
                 ;
-            var projectDefaultNamespaceName = Instances.ProjectNamespacesOperator.GetDefaultNamespaceName_FromProjectName(projectName);
+            var projectDefaultNamespaceName = Instances.ProjectNamespacesOperator.Get_DefaultNamespaceName_FromProjectName(projectName);
 
 
             /// Run.
@@ -438,7 +438,7 @@ namespace R5T.S0051
 			var projectDescription =
 				ProjectDescriptions.Instance.Example
 				;
-			var projectDefaultNamespaceName = Instances.ProjectNamespacesOperator.GetDefaultNamespaceName_FromProjectName(projectName);
+			var projectDefaultNamespaceName = Instances.ProjectNamespacesOperator.Get_DefaultNamespaceName_FromProjectName(projectName);
 
 
 			/// Run.
@@ -456,7 +456,7 @@ namespace R5T.S0051
 						projectDefaultNamespaceName);
                 });
 
-            F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectPathsInformation.ProjectDirectoryPath);
+            F0034.WindowsExplorerOperator.Instance.Open(projectPathsInformation.ProjectDirectoryPath);
             F0033.NotepadPlusPlusOperator.Instance.Open(projectPathsInformation.ProjectFilePath);
         }
 
@@ -476,13 +476,13 @@ namespace R5T.S0051
                 projectName,
                 async projectDirectoryPath =>
                 {
-					var projectFilePath = F0052.ProjectPathsOperator.Instance.GetProjectFilePath(
+					var projectFilePath = F0052.ProjectPathsOperator.Instance.Get_ProjectFilePath(
 						projectDirectoryPath,
 						projectName);
 
 					await F0081.ProjectFileOperations.Instance.NewProjectFile_OnlyProjectElement(projectFilePath);
 
-                    F0034.WindowsExplorerOperator.Instance.OpenDirectoryInExplorer(projectDirectoryPath);
+                    F0034.WindowsExplorerOperator.Instance.Open(projectDirectoryPath);
                     F0033.NotepadPlusPlusOperator.Instance.Open(projectFilePath);
                 });
         }
